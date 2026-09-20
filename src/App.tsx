@@ -1,32 +1,23 @@
-import { Header } from './components/Header';
-import { Hero3D } from './components/Hero3D';
-import { AboutPreview } from './components/AboutPreview';
-import { Focus3D } from './components/Focus3D';
-import { Network3D } from './components/Network3D';
-import { WhyEMBTA } from './components/WhyEMBTA';
-import { Values3D } from './components/Values3D';
-import { NewsPreview } from './components/NewsPreview';
-import { GalleryPreview } from './components/GalleryPreview';
-import { CTA3D } from './components/CTA3D';
-import { Footer } from './components/Footer';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Home } from './pages/Home';
+import { About } from './pages/About';
+import { Executive } from './pages/Executive';
+import { Gallery } from './pages/Gallery';
+import { News } from './pages/News';
+import { Contact } from './pages/Contact';
 
 export function App() {
   return (
-    <div className="min-h-screen bg-embta-navy">
-      <Header />
-      <main>
-        <Hero3D />
-        <AboutPreview />
-        <Focus3D />
-        <Network3D />
-        <WhyEMBTA />
-        <Values3D />
-        <NewsPreview />
-        <GalleryPreview />
-        <CTA3D />
-      </main>
-      <Footer />
-    </div>
+    <BrowserRouter basename="/EMBTA_web">
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/executive" element={<Executive />} />
+        <Route path="/gallery" element={<Gallery />} />
+        <Route path="/news" element={<News />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
