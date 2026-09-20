@@ -1,5 +1,4 @@
-import { useEffect } from 'react';
-import { BrowserRouter, Routes, Route, useSearchParams, useNavigate } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import { Home } from './pages/Home';
 import { About } from './pages/About';
 import { Executive } from './pages/Executive';
@@ -7,24 +6,9 @@ import { Gallery } from './pages/Gallery';
 import { News } from './pages/News';
 import { Contact } from './pages/Contact';
 
-function RedirectHandler() {
-  const [searchParams] = useSearchParams();
-  const navigate = useNavigate();
-  const redirect = searchParams.get('redirect');
-
-  useEffect(() => {
-    if (redirect) {
-      navigate(redirect, { replace: true });
-    }
-  }, [redirect, navigate]);
-
-  return null;
-}
-
 export function App() {
   return (
-    <BrowserRouter basename="/EMBTA_web">
-      <RedirectHandler />
+    <HashRouter>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
@@ -33,7 +17,7 @@ export function App() {
         <Route path="/news" element={<News />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
